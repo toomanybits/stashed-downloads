@@ -1,39 +1,121 @@
 # Privacy Policy
 
-**Last updated: 2026-05-14**
+**Last updated: 2026-06-04**
 
-Stashed is local-first. Everything you save is stored in your browser's local storage and never leaves your device.
+Stashed is local-first. By default, everything you save lives in your browser's
+local storage and never leaves your device. Some optional, clearly-labeled
+features (cloud sync, page archive, and AI tagging) do send data off your device
+— this policy explains exactly what, when, and to whom.
 
-## What we don't do
+We have no analytics, telemetry, crash reporters, or advertising trackers. We
+never sell your data.
 
-- We don't have a server, so we can't see what you save.
-- We don't have analytics, telemetry, crash reporters, or any tracking.
-- We don't have user accounts.
-- We don't send your data to any third party.
-- We don't use AI services on your saved content (v1).
+---
 
-## What the extension does over the network
+## 1. If you don't sign in (default)
 
-- **Favicons** — fetched from `google.com/s2/favicons` so saves show a recognizable icon.
-- **Page metadata** — the content script reads `<title>`, `<meta>`, and `<h1>` from pages you visit. This data stays on your device and is only used to suggest tags and surface related saves you've made.
+Stashed works fully without an account. In this mode:
 
-That's it. No data leaves your browser.
+- Your saved pages, tags, notes, and collections are stored only in your
+  browser (`chrome.storage.local`). We cannot see them.
+- The only network activity is:
+  - **Favicons** — fetched from `https://www.google.com/s2/favicons` so saves
+    show a recognizable icon.
+  - **Page metadata** — the content script reads the `<title>`, `<meta>`, and
+    `<h1>` of pages you visit to suggest tags and surface related saves. This
+    is processed **on your device** and is not transmitted anywhere.
 
-## Your data, your control
+That's the entire footprint for signed-out use.
 
-- **Export** your full stash any time (Settings → Export). JSON or standard Netscape bookmark HTML.
-- **Uninstalling** the extension removes all local data.
+---
 
-## Roadmap
+## 2. If you sign in (Google)
 
-If we add cloud sync in a future version, it will be:
+Signing in is optional and is used for the trial, subscription, and cloud
+features. We authenticate with Google via Chrome's identity API and receive a
+standard OpenID token. From it we store, on our backend:
 
-- **Opt-in** — off by default
-- **End-to-end encrypted** — we won't be able to read your saves
-- **Clearly disclosed** before any data leaves your device
+- Your Google account identifier (`sub`), and your email and name as provided by
+  Google.
+- Your subscription state (free / trial / Pro, trial dates).
 
-We will publish a new version of this policy before any such feature ships.
+Signing in **alone** does not upload your saved pages. Your stash stays local
+unless you have an active Pro subscription or trial (see below).
 
-## Contact
+Our backend is **Convex** (convex.dev), which hosts our database and server
+functions. Data is scoped to your account.
 
-Questions or concerns? Open an issue at https://github.com/toomanybits/stashed-downloads/issues
+---
+
+## 3. Pro / trial features that send data off your device
+
+These features are only active for Pro or trial users, and only for pages you
+choose to save.
+
+### Cloud sync
+When you sync, your stash (page URLs, titles, tags, notes, collections, and save
+timestamps) is uploaded to our Convex backend so it can be merged across your
+devices. Deletions are soft ("Trash") and are removed permanently after 30 days.
+This data is stored per-account on our servers; it is **not** end-to-end
+encrypted, because the archive and search features below require us to process it
+server-side.
+
+### Page archive
+For pages you save, Stashed captures the **readable text** of the page (capped in
+size) and stores it on our backend so the saved copy survives if the original
+link dies, and so you can search inside saved pages. Only the extracted text is
+stored — we do not capture passwords, form inputs, or content behind logins
+beyond what is visible as page text at save time.
+
+### AI tagging
+When you save a page, its title, URL, and a truncated excerpt of its text are
+sent — through our Convex backend — to a third-party AI provider (currently
+NVIDIA's hosted models) to generate topic tags. The provider processes this
+content to return tags; their handling of that data is governed by their own
+terms. We store only the resulting tags, not a separate copy of the request.
+This call happens only for Pro/trial users and is rate-limited per account.
+
+---
+
+## 4. Payments
+
+Subscriptions are handled by **Creem** (creem.io), our Merchant of Record. Creem
+processes your payment details directly — we never see or store your card
+information. We retain only Creem's customer and subscription identifiers and
+your subscription status. See Creem's privacy policy for how they handle payment
+data.
+
+Cancelling stops renewal; Pro remains active until the end of the paid period.
+
+---
+
+## 5. Your data, your control
+
+- **Export** your full stash any time (Settings → Export) as JSON or standard
+  Netscape bookmark HTML.
+- **Uninstalling** the extension removes all local data from your browser.
+- **Delete your cloud data** — sign out to stop syncing, or contact us to delete
+  your account and the data associated with it on our backend.
+
+---
+
+## 6. Children
+
+Stashed is not directed to children under 13 and we do not knowingly collect
+their data.
+
+---
+
+## 7. Changes
+
+We will update this policy and its "Last updated" date before any new
+data-handling behavior ships.
+
+---
+
+## 8. Contact
+
+Questions, concerns, or data deletion requests:
+
+- GitHub: https://github.com/toomanybits/stashed-downloads/issues
+- Email: toomanybit@gmail.com
