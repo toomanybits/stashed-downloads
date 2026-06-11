@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: 2026-06-04**
+**Last updated: 2026-06-11**
 
 Stashed is local-first. By default, everything you save lives in your browser's
 local storage and never leaves your device. Some optional, clearly-labeled
@@ -79,11 +79,11 @@ This call happens only for Pro/trial users and is rate-limited per account.
 
 ## 4. Payments
 
-Subscriptions are handled by **Creem** (creem.io), our Merchant of Record. Creem
-processes your payment details directly — we never see or store your card
-information. We retain only Creem's customer and subscription identifiers and
-your subscription status. See Creem's privacy policy for how they handle payment
-data.
+Subscriptions are handled by **Dodo Payments** (dodopayments.com), our Merchant
+of Record. Dodo processes your payment details directly — we never see or store
+your card information. We retain only Dodo's customer and subscription
+identifiers and your subscription status. See Dodo Payments' privacy policy for
+how they handle payment data.
 
 Cancelling stops renewal; Pro remains active until the end of the paid period.
 
