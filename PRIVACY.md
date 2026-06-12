@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated: 2026-06-11**
+**Last updated: 2026-06-12**
 
 Stashed is local-first. By default, everything you save lives in your browser's
 local storage and never leaves your device. Some optional, clearly-labeled
@@ -69,8 +69,8 @@ beyond what is visible as page text at save time.
 
 ### AI tagging
 When you save a page, its title, URL, and a truncated excerpt of its text are
-sent — through our Convex backend — to a third-party AI provider (currently
-NVIDIA's hosted models) to generate topic tags. The provider processes this
+sent — through our Convex backend — to a third-party AI provider (a hosted AI
+model proxied through our backend) to generate topic tags. The provider processes this
 content to return tags; their handling of that data is governed by their own
 terms. We store only the resulting tags, not a separate copy of the request.
 This call happens only for Pro/trial users and is rate-limited per account.
